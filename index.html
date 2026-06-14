@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mtn.Studio // Motion Portfolio</title>
+
+  <!-- Tailwind CSS via CDN for styling -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- App Logic -->
+  <script type="module" src="js/main.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-[#0a0a0c] text-zinc-100 min-h-screen font-sans antialiased transition-colors duration-500 selection:bg-blue-500 selection:text-white dark:bg-[#0a0a0c] dark:text-zinc-100 bg-[#f8f9fa] text-zinc-900">
+
+  <!-- GLOWING AMBIENT BACKGROUND LIGHTS -->
+  <div class="absolute top-0 inset-x-0 h-[600px] pointer-events-none overflow-hidden -z-10">
+    <div
+      class="absolute top-[-250px] left-1/2 -translate-x-1/2 w-[600px] md:w-[900px] h-[500px] rounded-full blur-[160px] opacity-25 transition-colors duration-500 dark:bg-indigo-600 bg-blue-400">
+    </div>
+    <div
+      class="absolute top-[200px] right-[10%] w-[400px] h-[350px] rounded-full blur-[140px] opacity-15 transition-colors duration-500 dark:bg-pink-500 bg-purple-300">
+    </div>
+  </div>
+
+  <!-- TOP DECORATIVE BROADCAST PANEL TAPE -->
+  <div
+    class="w-full py-1.5 border-b text-[10px] font-mono tracking-widest text-center uppercase dark:bg-zinc-950 dark:border-zinc-900/60 dark:text-zinc-500 bg-zinc-150 border-zinc-200 text-zinc-600">
+    <div class="max-w-[1400px] mx-auto px-6 flex justify-between items-center">
+      <div class="flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>STUDIO_LIVE_NODE_3000</span>
+      </div>
+      <div class="hidden md:flex gap-4">
+        <span>FPS: 60_RENDER</span>
+        <span>SHADERS: REDSHIFT_SUPPORTED</span>
+        <span>REGION: BANDUNG_ID</span>
+      </div>
+      <span class="text-zinc-400 dark:text-zinc-600">PROTOTYPE_V1.2_VANILLA</span>
+    </div>
+  </div>
+
+  <!-- STICKY MAIN NAVIGATION LAYOUT -->
+  <nav id="main-nav"
+    class="sticky top-0 z-40 backdrop-blur-lg border-b transition-colors dark:bg-[#0a0a0c]/85 dark:border-zinc-900 bg-[#f8f9fa]/85 border-zinc-200">
+    <div class="max-w-[1400px] mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <a href="#" class="font-display text-lg font-black tracking-tighter uppercase flex items-center gap-2">
+          <span
+            class="text-blue-600 font-extrabold flex items-center justify-center bg-blue-500/10 w-8 h-8 rounded-lg border border-blue-500/20">M</span>
+          <span>MOTION<span class="font-light text-zinc-500">.STUDIO</span></span>
+        </a>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8 text-xs font-mono uppercase tracking-widest">
+        <a href="#work"
+          class="transition-colors cursor-pointer dark:text-zinc-400 dark:hover:text-white text-zinc-600 hover:text-black">Selected
+          Works</a>
+        <a href="#motion-sandbox"
+          class="transition-colors cursor-pointer dark:text-zinc-400 dark:hover:text-white text-zinc-600 hover:text-black">Visual
+          Sandbox</a>
+        <a href="#capabilities"
+          class="transition-colors cursor-pointer dark:text-zinc-400 dark:hover:text-white text-zinc-600 hover:text-black">Capabilities</a>
+        <a href="#estimator-brief"
+          class="transition-colors cursor-pointer dark:text-zinc-400 dark:hover:text-white text-zinc-600 hover:text-black">Brief
+          Estimate</a>
+        <a href="#contact"
+          class="transition-colors cursor-pointer dark:text-zinc-400 dark:hover:text-white text-zinc-600 hover:text-black">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggler"
+          class="p-2.5 rounded-xl border transition-all cursor-pointer bg-zinc-900 border-zinc-800 text-amber-400 hover:text-amber-300 hover:bg-zinc-850"
+          title="Switch Theme">
+          <i data-lucide="sun" style="width:15px;height:15px;"></i>
+        </button>
+        <a href="#estimator-brief"
+          class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs uppercase tracking-widest rounded-xl transition-all font-semibold shadow-sm">
+          Draft Project
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- LOCALIZED BANNER MESSAGE GREETING -->
+  <div
+    class="py-2 px-6 border-b text-xs flex justify-between items-center dark:bg-zinc-950/60 dark:border-zinc-900 dark:text-zinc-400 bg-zinc-50 border-zinc-200 text-zinc-600">
+    <div class="max-w-[1400px] mx-auto w-full flex flex-col md:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2 text-zinc-500 text-[10px] font-mono">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+        <span>ACTIVE CULTURE ENGINE:</span>
+      </div>
+
+      <div id="greeting-text"
+        class="text-center font-semibold font-mono tracking-tight text-blue-500 transition-opacity duration-300">
+        Sampurasun, Wilujeng Sumping! <span class="opacity-45 text-[9px] uppercase">[Sundanese]</span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-1.5 text-[10px] font-mono text-zinc-500">
+        <span>PROUDLY LOCALIZED FOR INDONESIA & JAVA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO COMPONENT SECTION -->
+  <header
+    class="relative min-h-[calc(100vh-140px)] flex flex-col justify-center items-center px-6 text-center py-16 overflow-hidden">
+    <div class="max-w-5xl mx-auto z-10 space-y-8">
+      <div class="flex justify-center">
+        <span
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-mono rounded-full border dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300 bg-white border-zinc-200 text-zinc-700">
+          <i data-lucide="sparkles" class="text-yellow-500 animate-spin" style="width:12px;height:12px;"></i>
+          <span>3D Motion, Dynamic Simulations & Digital Realities</span>
+        </span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display tracking-tight leading-[1.05]">
+        Mind-Bending Fluid <br />
+        <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-500 font-extrabold italic pr-1">
+          Gerak Sajati.
+        </span>
+      </h1>
+
+      <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed dark:text-zinc-400 text-zinc-600">
+        An independent interactive space of Motion Arts, CGI layouts, and dynamic procedural physics. Merging
+        mathematical equations with cinematic rendering.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="#work"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-500 hover:scale-105 transition-all shadow-lg text-sm uppercase tracking-wider font-mono cursor-pointer">
+          Selected Projects
+          <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+        </a>
+        <a href="#motion-sandbox"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-medium transition-all text-sm uppercase tracking-wider font-mono border cursor-pointer dark:bg-zinc-900 dark:hover:bg-zinc-850 dark:hover:border-zinc-700 dark:border-zinc-800 dark:text-zinc-200 bg-white hover:bg-zinc-50 border-zinc-200 text-zinc-700">
+          Open Sandbox Visuals
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="absolute bottom-6 left-1/2 -translate-x-1/2 w-full max-w-lg hidden md:grid grid-cols-3 gap-4 px-6 text-left opacity-60">
+      <div class="p-3 rounded-xl border dark:bg-zinc-950/40 dark:border-zinc-900 bg-white border-zinc-200 shadow-xs">
+        <div class="text-[9px] font-mono text-blue-500 font-bold">01 // HOUDINI SIMS</div>
+        <div class="text-[10px] text-zinc-400 mt-0.5">FLIP & Pyro caches</div>
+      </div>
+      <div class="p-3 rounded-xl border dark:bg-zinc-950/40 dark:border-zinc-900 bg-white border-zinc-200 shadow-xs">
+        <div class="text-[9px] font-mono text-blue-500 font-bold">02 // REDSHIFT SHADERS</div>
+        <div class="text-[10px] text-zinc-400 mt-0.5">Ultra physical bounds</div>
+      </div>
+      <div class="p-3 rounded-xl border dark:bg-zinc-950/40 dark:border-zinc-900 bg-white border-zinc-200 shadow-xs">
+        <div class="text-[9px] font-mono text-blue-500 font-bold">03 // WEB INTEGRATED</div>
+        <div class="text-[10px] text-zinc-400 mt-0.5">Flexible custom canvas</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECTION SELECTED WORK GALLERY -->
+  <section id="work" class="px-6 py-24 max-w-[1400px] mx-auto space-y-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 border-b border-zinc-800 pb-8">
+      <div>
+        <div class="flex items-center gap-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+          <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+          <span>DIGITAL SHOWCASE ARCHIVE</span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-display font-black tracking-tight mt-1">
+          Selected Moving Artworks
+        </h2>
+      </div>
+      <div class="text-left md:text-right">
+        <span class="text-zinc-500 text-xs font-mono uppercase tracking-widest">PRODUCTION SEASONS [2023 — 2024]</span>
+      </div>
+    </div>
+
+    <div id="categories-container"
+      class="flex flex-wrap items-center gap-2 justify-start scrollbar-none overflow-x-auto">
+      <!-- Generated via JS -->
+    </div>
+
+    <div id="projects-grid" class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+      <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- MIDDLE EMBEDDABLE LIGHT BOX SANDBOX SECTION -->
+  <section
+    class="py-24 border-t border-b transition-colors dark:bg-zinc-900/20 dark:border-zinc-900/60 bg-zinc-50 border-zinc-200">
+    <div class="max-w-[1400px] mx-auto px-6 space-y-12">
+      <div class="max-w-2xl text-left space-y-2">
+        <span class="text-xs font-mono text-blue-500 uppercase font-bold tracking-widest block">
+          COORDINATE CONTROLS & WEBGL CANVAS simulation
+        </span>
+        <h2 class="text-3xl md:text-5xl font-display font-black tracking-tight">
+          Interactive Motion Sandbox
+        </h2>
+        <p class="text-xs md:text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
+          Customize mathematical vectors, physics parameters, and particle densities. This sandbox models procedural
+          fluid environments instantly compiled on your browser.
+        </p>
+      </div>
+
+      <!-- Sandbox UI -->
+      <div id="motion-sandbox-container"
+        class="rounded-3xl border dark:bg-zinc-950 dark:border-zinc-800 bg-white border-zinc-200 p-6 md:p-8 overflow-hidden relative shadow-xl">
+        <div class="absolute top-0 left-0 p-6 pointer-events-none">
+          <span
+            class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            <i data-lucide="zap" class="animate-pulse" style="width:11px;height:11px;"></i>
+            INTERACTIVE SANDBOX
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-6">
+          <!-- Controls -->
+          <div id="sandbox-controls" class="lg:col-span-4 space-y-6 z-10 relative">
+            <div>
+              <h3 class="text-xl font-display font-bold">Interactive Dynamic Playground</h3>
+              <p class="text-xs mt-1 dark:text-zinc-400 text-zinc-500 leading-relaxed">
+                Tune vector velocities, gravity indexes, and fluid counts directly in the web-compiled canvas viewport.
+              </p>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-2.5">Select Preset
+                Behavior</span>
+              <div class="grid grid-cols-2 gap-2">
+                <button id="preset-quantum-wave"
+                  class="px-3 py-2 text-xs rounded-xl font-medium text-left border transition-all cursor-pointer">
+                  <div class="truncate font-semibold">Quantum Wave</div>
+                  <div class="text-[10px] opacity-75 mt-0.5">WAVES</div>
+                </button>
+                <button id="preset-cyber-grid"
+                  class="px-3 py-2 text-xs rounded-xl font-medium text-left border transition-all cursor-pointer">
+                  <div class="truncate font-semibold">Cyber Grid</div>
+                  <div class="text-[10px] opacity-75 mt-0.5">PARTICLES</div>
+                </button>
+                <button id="preset-gravity-sparks"
+                  class="px-3 py-2 text-xs rounded-xl font-medium text-left border transition-all cursor-pointer">
+                  <div class="truncate font-semibold">Gravity Sparks</div>
+                  <div class="text-[10px] opacity-75 mt-0.5">GRAVITY</div>
+                </button>
+                <button id="preset-matrix-stream"
+                  class="px-3 py-2 text-xs rounded-xl font-medium text-left border transition-all cursor-pointer">
+                  <div class="truncate font-semibold">Matrix Stream</div>
+                  <div class="text-[10px] opacity-75 mt-0.5">MATRIX</div>
+                </button>
+              </div>
+            </div>
+
+            <hr class="dark:border-zinc-800 border-zinc-200" />
+
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1.5">
+                  <span class="dark:text-zinc-400 text-zinc-600">System Velocity multiplier</span>
+                  <span id="speed-display" class="text-blue-500 font-semibold">1.5x</span>
+                </div>
+                <input id="slider-speed" type="range" min="0.1" max="4.0" step="0.1" value="1.5"
+                  class="w-full accent-blue-500 cursor-pointer h-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 appearance-none" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1.5">
+                  <span class="dark:text-zinc-400 text-zinc-600">Gravity Pull Offset</span>
+                  <span id="gravity-display" class="text-amber-500 font-semibold">0.00</span>
+                </div>
+                <input id="slider-gravity" type="range" min="-0.2" max="0.8" step="0.02" value="0"
+                  class="w-full accent-amber-500 cursor-pointer h-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 appearance-none" />
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-mono mb-1.5">
+                  <span class="dark:text-zinc-400 text-zinc-600">Mass Density count</span>
+                  <span id="count-display" class="text-emerald-500 font-semibold">120 active</span>
+                </div>
+                <input id="slider-count" type="range" min="30" max="250" step="5" value="120"
+                  class="w-full accent-emerald-500 cursor-pointer h-1.5 rounded-lg bg-zinc-200 dark:bg-zinc-800 appearance-none" />
+              </div>
+            </div>
+
+            <hr class="dark:border-zinc-800 border-zinc-200" />
+
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-2.5">Pointer Physics
+                Interaction</span>
+              <div class="flex gap-2">
+                <button id="interaction-attract"
+                  class="flex-1 py-1.5 text-xs font-mono rounded-lg border transition-all cursor-pointer text-center">ATTRACT</button>
+                <button id="interaction-repel"
+                  class="flex-1 py-1.5 text-xs font-mono rounded-lg border transition-all cursor-pointer text-center">REPEL</button>
+                <button id="interaction-none"
+                  class="flex-1 py-1.5 text-xs font-mono rounded-lg border transition-all cursor-pointer text-center">NONE</button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <span class="text-xs font-mono text-zinc-400">Node Colors</span>
+              <div class="flex items-center gap-3">
+                <input id="picker-primary-color" type="color" value="#3b82f6"
+                  class="w-6 h-6 rounded-md border-0 cursor-pointer overflow-hidden p-0" />
+                <input id="picker-secondary-color" type="color" value="#ec4899"
+                  class="w-6 h-6 rounded-md border-0 cursor-pointer overflow-hidden p-0" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Viewport -->
+          <div id="sandbox-viewport"
+            class="lg:col-span-8 relative aspect-[4/3] md:aspect-auto lg:h-[460px] rounded-2xl overflow-hidden bg-black border border-zinc-800/80 group">
+            <canvas id="playground-canvas" class="w-full h-full block cursor-crosshair"></canvas>
+
+            <div class="absolute bottom-4 right-4 flex items-center gap-2 z-10">
+              <button id="btn-toggle-play"
+                class="p-3.5 bg-black/75 backdrop-blur-md rounded-full text-white border border-white/15 hover:bg-black hover:border-white/30 hover:scale-105 transition-all cursor-pointer shadow-lg">
+                <i data-lucide="pause" style="width:15px;height:15px;"></i>
+              </button>
+            </div>
+
+            <div
+              class="absolute top-4 right-4 pointer-events-none p-3.5 bg-black/60 backdrop-blur-md rounded-xl text-[10px] font-mono text-zinc-400 border border-white/5 space-y-1">
+              <div class="flex items-center gap-1.5">
+                <span id="sandbox-indicator" class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span>CANVAS_RENDER_OK</span>
+              </div>
+              <div>FPS: 60 approx</div>
+              <div id="mesh-type-display">MESH_TYPE: WAVES</div>
+            </div>
+
+            <div
+              class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/10">
+              <div
+                class="px-4 py-2 bg-black/80 backdrop-blur-md rounded-xl border border-white/10 flex items-center gap-2 text-xs text-white">
+                <i data-lucide="move" class="text-blue-400" style="width:14px;height:14px;"></i>
+                <span>Hover mouse over viewport to attract / perturb nodes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE TOOLKIT & DETAILED CAPABILITIES CARDS -->
+  <section id="capabilities" class="px-6 py-24 max-w-[1400px] mx-auto space-y-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-4 space-y-6">
+        <div class="flex items-center gap-2 text-xs font-mono text-zinc-500 uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+          <span>THE TECHNICAL SYSTEM</span>
+        </div>
+        <h2 class="text-3xl md:text-5xl font-display font-black tracking-tight leading-none">
+          Rigging <br />Capabilities & Pipeline
+        </h2>
+        <p class="text-xs md:text-sm leading-relaxed dark:text-zinc-400 text-zinc-600">
+          We merge computational simulations with high-end luxury visual direction. Using production-grade software
+          setups, we ensure full fidelity across all render pipelines.
+        </p>
+
+        <div
+          class="p-5 rounded-2xl border dark:bg-zinc-950/40 dark:border-zinc-900 bg-white border-zinc-200/80 shadow-xs space-y-4">
+          <h4 class="text-xs font-mono uppercase tracking-wider font-bold">SOFTWARE STACK</h4>
+          <div id="software-stack-container" class="grid grid-cols-2 gap-2">
+            <!-- Generated via JS -->
+          </div>
+        </div>
+      </div>
+
+      <div id="capabilities-grid" class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <!-- Generated via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE INTERACTIVE BRIEF ESTIMATION CALCULATOR -->
+  <section
+    class="py-24 border-t border-b transition-colors dark:bg-zinc-900/20 dark:border-zinc-900/60 bg-zinc-50 border-zinc-200">
+    <div id="estimator-brief" class="max-w-[1400px] mx-auto px-6">
+
+      <div
+        class="rounded-3xl border dark:bg-zinc-950 dark:border-zinc-800 bg-white border-zinc-200 p-6 md:p-8 overflow-hidden relative shadow-lg">
+        <div class="flex flex-col lg:flex-row gap-12">
+
+          <div class="flex-1 space-y-6">
+            <div>
+              <h3 class="text-2xl font-display font-extrabold tracking-tight">Interactive Project Builder & Estimator
+              </h3>
+              <p class="text-xs mt-1 leading-relaxed dark:text-zinc-400 text-zinc-500">Select your digital dimensions,
+                timeline scales, and stylistic preferences. Our real-time algorithm drafts an instant creative outline
+                and timeline assessment.</p>
+            </div>
+
+            <form id="brief-generator-form" class="space-y-5">
+              <div>
+                <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">Owner or Brand
+                  Identifier</label>
+                <input id="brief-client-name" type="text" placeholder="e.g. Nova Techlabs, or Mark J." required
+                  class="w-full text-sm px-4 py-3 rounded-xl border focus:outline-none transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:focus:border-white dark:text-white bg-zinc-50 border-zinc-200 focus:border-zinc-950 text-zinc-900" />
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">Target
+                    Industry Sector</label>
+                  <select id="brief-industry"
+                    class="w-full text-xs px-4 py-3 rounded-xl border focus:outline-none cursor-pointer dark:bg-zinc-900 dark:border-zinc-800 dark:text-white bg-zinc-50 border-zinc-200 text-zinc-900">
+                    <option value="Tech">Tech</option>
+                    <option value="Luxury">Luxury</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Minimalist">Minimalist</option>
+                    <option value="Brutalist">Brutalist</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">Motion
+                    Creative Style</label>
+                  <select id="brief-style"
+                    class="w-full text-xs px-4 py-3 rounded-xl border focus:outline-none cursor-pointer dark:bg-zinc-900 dark:border-zinc-800 dark:text-white bg-zinc-50 border-zinc-200 text-zinc-900">
+                    <option value="Simulation">Simulation</option>
+                    <option value="Kinetic Typography">Kinetic Typography</option>
+                    <option value="Complex CGI">Complex CGI</option>
+                    <option value="Brand System">Brand System</option>
+                    <option value="UI Interaction">UI Interaction</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-[10px] font-mono mb-1.5 ">
+                  <span class="uppercase text-zinc-400 tracking-widest">Target Video Duration</span>
+                  <span id="brief-duration-display" class="text-blue-500 font-semibold">15 seconds</span>
+                </div>
+                <div class="flex gap-2">
+                  <button id="brief-duration-5" type="button">5s</button>
+                  <button id="brief-duration-15" type="button">15s</button>
+                  <button id="brief-duration-30" type="button">30s</button>
+                  <button id="brief-duration-60" type="button">60s</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">Complexity &
+                  Fidelity Tier</label>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
+                  <button id="brief-complexity-standard" type="button">
+                    <div class="text-xs font-semibold">Standard</div>
+                    <div class="text-[9px] opacity-75 mt-0.5 font-light">Optimized loops, fast turn</div>
+                  </button>
+                  <button id="brief-complexity-premium-studio" type="button">
+                    <div class="text-xs font-semibold">Premium Studio</div>
+                    <div class="text-[9px] opacity-75 mt-0.5 font-light">Custom simulation shaders</div>
+                  </button>
+                  <button id="brief-complexity-masterclass-advanced" type="button">
+                    <div class="text-xs font-semibold">Masterclass Advanced</div>
+                    <div class="text-[9px] opacity-75 mt-0.5 font-light">Raw source files + custom soundtrack</div>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">Brief Scope
+                  Detail / References</label>
+                <textarea id="brief-request-details" rows="2"
+                  placeholder="List brand vibes, reference films, or audio cues..."
+                  class="w-full text-xs px-4 py-3 rounded-xl border focus:outline-none transition-colors resize-none dark:bg-zinc-900 dark:border-zinc-800 dark:focus:border-white dark:text-white bg-zinc-50 border-zinc-200 focus:border-zinc-950 text-zinc-900"></textarea>
+              </div>
+
+              <button id="btn-calculate-brief" type="submit"
+                class="w-full py-3.5 rounded-xl font-display font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.01] dark:bg-blue-600 dark:text-white dark:hover:bg-blue-500 dark:shadow-md bg-blue-600 text-white hover:bg-blue-700 shadow-md">
+                <i data-lucide="calculator" style="width:13px;height:13px;"></i> Calculate Concept Blueprint
+              </button>
+            </form>
+          </div>
+
+          <!-- Output Panel -->
+          <div class="flex-1 flex flex-col justify-between">
+            <div id="brief-view-waiting"
+              class="flex-1 flex flex-col items-center justify-center text-center p-8 rounded-2xl border-2 border-dashed dark:border-zinc-850 dark:bg-zinc-900/10 dark:text-zinc-500 border-zinc-200 bg-zinc-50 text-zinc-400">
+              <div class="p-4 bg-blue-500/10 text-blue-500 rounded-full mb-3">
+                <i data-lucide="sparkles" class="animate-pulse" style="width:24px;height:24px;"></i>
+              </div>
+              <h4 class="text-sm font-bold font-display dark:text-zinc-300 text-zinc-700">Blueprint Blueprint Estimator
+              </h4>
+              <p class="text-xs max-w-xs mx-auto mt-2 leading-relaxed">Fill out the parameters on the left and tap the
+                button to model live budgets, team timelines, and tech requirements.</p>
+            </div>
+
+            <div id="brief-view-generated"
+              class="hidden flex-1 flex-col justify-between p-6 md:p-8 rounded-2xl border dark:bg-zinc-900/60 dark:border-zinc-800 dark:text-white bg-zinc-50 border-zinc-200 text-zinc-900">
+              <div class="space-y-6">
+                <div class="flex justify-between items-start border-b border-zinc-850 pb-4">
+                  <div>
+                    <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500">SPECIFICATION
+                      BLUEPRINT</span>
+                    <h4 id="brief-out-name" class="text-lg font-display font-extrabold mt-0.5">Draft</h4>
+                  </div>
+                  <div class="text-right">
+                    <span
+                      class="text-[9px] font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase">Active
+                      Estimate</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <div
+                    class="p-4 rounded-xl bg-black/40 border border-zinc-850 flex flex-col justify-between text-white">
+                    <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">PROJECT BUDGET</span>
+                    <div class="flex items-baseline gap-0.5 text-2xl font-display font-black text-amber-400 mt-1">
+                      <span class="text-sm font-medium">$</span><span id="brief-out-budget">0</span>
+                    </div>
+                    <span class="text-[9px] text-zinc-500 mt-1">Includes core assets transfer</span>
+                  </div>
+                  <div
+                    class="p-4 rounded-xl bg-black/40 border border-zinc-850 flex flex-col justify-between text-white">
+                    <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">ESTIMATED DELIVERY</span>
+                    <div class="flex items-baseline gap-1 text-2xl font-display font-black text-emerald-400 mt-1">
+                      <span id="brief-out-days">0</span><span class="text-xs font-medium">days</span>
+                    </div>
+                    <span class="text-[9px] text-zinc-500 mt-1">Sequential agile delivery</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3.5 text-xs">
+                  <div class="flex justify-between py-1.5 border-b border-zinc-850">
+                    <span class="text-zinc-500">Industry Setting:</span><span id="brief-out-industry"
+                      class="font-semibold"></span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-zinc-850">
+                    <span class="text-zinc-500">Artistic Style:</span><span id="brief-out-style"
+                      class="font-semibold"></span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-zinc-850">
+                    <span class="text-zinc-500">Video Duration:</span><span id="brief-out-duration"
+                      class="font-semibold font-mono"></span>
+                  </div>
+                  <div class="flex justify-between py-1.5 border-b border-zinc-850">
+                    <span class="text-zinc-500">Fidelity Tier:</span><span id="brief-out-complexity"
+                      class="font-semibold text-blue-500"></span>
+                  </div>
+                </div>
+
+                <div>
+                  <span class="text-[9px] font-mono text-zinc-500 block mb-1.5 uppercase tracking-wider">RECOMMENDED
+                    ENGINE PIPELINE:</span>
+                  <div id="brief-out-software" class="flex flex-wrap gap-1.5"></div>
+                </div>
+              </div>
+
+              <div class="pt-6 border-t border-zinc-850">
+                <div id="brief-success"
+                  class="hidden items-center gap-2 p-3 bg-emerald-500/15 border border-emerald-500/30 rounded-xl text-emerald-400 text-xs">
+                  <i data-lucide="check-circle" style="width:16px;height:16px;"></i>
+                  <span>Blueprint loaded! Scroll down to confirm submission in the Contact block.</span>
+                </div>
+                <button id="btn-apply-brief"
+                  class="w-full py-2.5 bg-white text-black hover:bg-zinc-200 text-xs rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all">
+                  <i data-lucide="send" style="width:12px;height:12px;"></i> Attach blueprint to Contact Form
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT FORM BLOCK SUBMISSION -->
+  <section id="contact" class="py-24 px-6 max-w-4xl mx-auto space-y-12">
+    <div class="text-center space-y-3">
+      <div class="flex justify-center">
+        <span
+          class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono text-blue-500 rounded-full bg-blue-500/10 border border-blue-500/20 uppercase font-bold">
+          GET IN TOUCH
+        </span>
+      </div>
+      <h2 class="text-4xl md:text-6xl font-display font-black tracking-tighter leading-none">
+        Let’s craft cinema.
+      </h2>
+      <p class="text-xs md:text-sm max-w-lg mx-auto leading-relaxed dark:text-zinc-400 text-zinc-500">
+        Ready to design abstract vector dynamics or immersive branding campaigns? Leave a message or attach a simulated
+        conceptual blueprint below.
+      </p>
+    </div>
+
+    <div id="success-contact-box"
+      class="hidden flex-col p-8 rounded-3xl text-center border space-y-4 max-w-xl mx-auto dark:bg-emerald-950/20 dark:border-emerald-500/30 bg-emerald-50 border-emerald-200">
+      <span class="text-4xl">🚀</span>
+      <h3 class="text-xl font-bold font-display text-emerald-500">Hatur Nuhun! Submission Success</h3>
+      <p class="text-xs text-zinc-400 leading-relaxed">
+        We received your blueprint instructions. Our simulated studio engine is allocating render servers and scheduling
+        an introductory call to launch your concept.
+      </p>
+      <button id="reset-contact-btn"
+        class="px-4 py-2 mx-auto w-max rounded-xl text-xs font-mono font-bold uppercase transition-all cursor-pointer dark:bg-zinc-900 dark:hover:bg-zinc-800 bg-zinc-200 hover:bg-zinc-300">
+        Compose New Message
+      </button>
+    </div>
+
+    <form id="portfolio-contact-form"
+      class="p-6 md:p-8 rounded-3xl border space-y-6 max-w-2xl mx-auto dark:bg-zinc-950 dark:border-zinc-850 bg-white border-zinc-200 shadow-sm">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">YOUR NAME</label>
+          <input type="text" placeholder="e.g. Akira R." required
+            class="w-full text-xs px-4 py-3 rounded-xl border focus:outline-none transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:focus:border-white dark:text-white bg-zinc-50 border-zinc-200 focus:border-zinc-950 text-zinc-900" />
+        </div>
+        <div>
+          <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">EMAIL
+            ADDRESS</label>
+          <input type="email" placeholder="e.g. akira@domain.com" required
+            class="w-full text-xs px-4 py-3 rounded-xl border focus:outline-none transition-colors dark:bg-zinc-900 dark:border-zinc-800 dark:focus:border-white dark:text-white bg-zinc-50 border-zinc-200 focus:border-zinc-950 text-zinc-900" />
+        </div>
+      </div>
+
+      <div>
+        <label class="text-[10px] font-mono text-zinc-400 block mb-1.5 uppercase tracking-widest">PROJECT MESSAGE /
+          BUDGET BLUEPRINT</label>
+        <textarea id="contact-message"
+          placeholder="Give us details about your dynamic request here, or generate a conceptual brief estimator from the blueprint tool above to fill this space automatically..."
+          required rows="5"
+          class="w-full text-xs px-4 py-3 rounded-xl border focus:outline-none transition-all resize-none dark:bg-zinc-900 dark:border-zinc-800 dark:focus:border-white dark:text-white dark:font-mono bg-zinc-50 border-zinc-200 focus:border-zinc-950 text-zinc-900"></textarea>
+      </div>
+
+      <div
+        class="p-4.5 rounded-xl border border-dashed flex items-center justify-between text-[11px] dark:border-zinc-850 dark:bg-zinc-900/40 dark:text-zinc-500 border-zinc-250 bg-zinc-50 text-zinc-400">
+        <div class="flex items-center gap-2">
+          <span>📁</span>
+          <span class="font-mono">Reference Moodboards / Storyboards</span>
+        </div>
+        <span class="text-[9px] uppercase font-mono bg-zinc-500/10 px-2 py-0.5 rounded text-zinc-400">Drag-Drop / Click
+          Support</span>
+      </div>
+
+      <button id="btn-submit-contact" type="submit"
+        class="w-full py-4.5 rounded-xl font-display font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all bg-blue-600 hover:bg-blue-500 text-white shadow-md active:scale-98">
+        <span>Initialize Creative Brief Transmission</span>
+        <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
+      </button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer
+    class="border-t py-12 px-6 text-center text-xs dark:bg-[#050507] dark:border-zinc-900 dark:text-zinc-500 bg-[#eef1f5] border-zinc-200 text-zinc-650">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="text-left space-y-1">
+        <h5
+          class="font-display font-bold text-sm tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-500 uppercase">
+          Mtn.Studio // Gerak Sajati
+        </h5>
+        <p class="text-[11px] font-mono">&copy; 2026 Interactive Portfolio. Made to combine High-End Motion & WebGL.</p>
+      </div>
+      <div class="flex gap-4">
+        <a href="#"
+          class="p-2.5 rounded-lg border transition-colors dark:border-zinc-900 dark:bg-zinc-950/60 dark:hover:text-white dark:hover:border-zinc-850 border-zinc-200 bg-white hover:text-black"><i
+            data-lucide="github" style="width:14px;height:14px;"></i></a>
+        <a href="#"
+          class="p-2.5 rounded-lg border transition-colors dark:border-zinc-900 dark:bg-zinc-950/60 dark:hover:text-white dark:hover:border-zinc-850 border-zinc-200 bg-white hover:text-black"><i
+            data-lucide="instagram" style="width:14px;height:14px;"></i></a>
+        <a href="#"
+          class="p-2.5 rounded-lg border transition-colors dark:border-zinc-900 dark:bg-zinc-950/60 dark:hover:text-white dark:hover:border-zinc-850 border-zinc-200 bg-white hover:text-black"><i
+            data-lucide="linkedin" style="width:14px;height:14px;"></i></a>
+      </div>
+      <div class="text-right">
+        <div class="text-[10px] font-mono text-zinc-500">RENDER STAGE STATUS</div>
+        <div class="flex items-center gap-1.5 justify-end mt-0.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+          <span class="font-mono text-xs font-semibold dark:text-zinc-400 text-zinc-700">COMPILED_STABLE</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="case-study-backdrop"
+    class="fixed inset-0 z-50 hidden items-center justify-end bg-black/75 backdrop-blur-md p-0 md:p-4">
+    <div id="case-study-drawer"
+      class="w-full md:max-w-3xl h-full md:h-[calc(100vh-2rem)] rounded-none md:rounded-3xl shadow-2xl overflow-y-auto relative flex flex-col dark:bg-zinc-950 dark:text-white dark:border-zinc-800 bg-white text-zinc-900 border-zinc-200">
+      <div id="modal-top-bar"
+        class="sticky top-0 z-20 flex justify-between items-center px-6 py-4 border-b backdrop-blur-md dark:bg-zinc-950/95 dark:border-zinc-800 bg-white/95 border-zinc-200">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+          <span class="font-mono text-xs uppercase tracking-widest text-zinc-500">Case Study Spec</span>
+        </div>
+        <button id="btn-close-drawer"
+          class="p-2 rounded-full cursor-pointer transition-colors dark:bg-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white bg-zinc-100 text-zinc-600 hover:bg-zinc-200 hover:text-black">
+          <i data-lucide="x" style="width:18px;height:18px;"></i>
+        </button>
+      </div>
+
+      <div class="relative aspect-video w-full bg-black overflow-hidden flex items-center justify-center group">
+        <video id="modal-video" src="" poster="" autoPlay loop muted playsInline
+          class="w-full h-full object-cover opacity-85 group-hover:scale-102 transition-transform duration-700"></video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none">
+        </div>
+        <div class="absolute bottom-6 left-6 right-6 text-white text-left z-10">
+          <span id="modal-cat"
+            class="px-3 py-1 bg-white/20 backdrop-blur-md text-xs font-mono rounded-full uppercase tracking-widest text-zinc-200 border border-white/10"></span>
+          <h2 id="modal-title" class="text-3xl md:text-4xl font-display font-extrabold tracking-tight mt-3"></h2>
+        </div>
+      </div>
+
+      <div class="p-6 md:p-8 space-y-8 flex-1">
+        <div id="modal-specs-box"
+          class="grid grid-cols-2 md:grid-cols-4 gap-4 p-5 rounded-2xl border dark:bg-zinc-900/40 dark:border-zinc-900 bg-zinc-50 border-zinc-200">
+          <div><span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-1">CLIENT</span><span
+              id="modal-client" class="text-sm font-semibold"></span></div>
+          <div><span
+              class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-1">TIMELINE</span><span
+              id="modal-year" class="text-sm font-semibold"></span></div>
+          <div><span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-1">ROLE</span><span
+              id="modal-role" class="text-sm font-semibold"></span></div>
+          <div><span
+              class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-1">CATEGORY</span><span
+              id="modal-cat2" class="text-sm font-semibold text-blue-500"></span></div>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-lg font-display font-bold flex items-center gap-2">
+            <i data-lucide="briefcase" class="text-blue-500" style="width:16px;height:16px;"></i> Project Narrative
+            Overview
+          </h3>
+          <p id="modal-desc" class="text-sm leading-relaxed dark:text-zinc-300 text-zinc-600"></p>
+        </div>
+
+        <div id="modal-challenges-wrap" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div
+            class="p-5 rounded-2xl border dark:bg-red-950/15 dark:border-red-500/20 bg-red-50/50 border-red-200 space-y-3">
+            <div class="flex items-center gap-2 text-rose-500">
+              <i data-lucide="alert-triangle" style="width:18px;height:18px;"></i><span
+                class="text-sm font-bold uppercase tracking-wider font-display">THE CHALLENGE</span>
+            </div>
+            <p id="modal-challenge-text" class="text-xs leading-relaxed dark:text-zinc-300 text-zinc-700"></p>
+          </div>
+          <div
+            class="p-5 rounded-2xl border dark:bg-emerald-950/15 dark:border-emerald-500/20 bg-emerald-50/50 border-emerald-200 space-y-3">
+            <div class="flex items-center gap-2 text-emerald-500">
+              <i data-lucide="lightbulb" style="width:18px;height:18px;"></i><span
+                class="text-sm font-bold uppercase tracking-wider font-display">THE PROCEDURAL SOLUTION</span>
+            </div>
+            <p id="modal-solution-text" class="text-xs leading-relaxed dark:text-zinc-300 text-zinc-700"></p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-zinc-400 font-mono">ENGINE PIPELINE & SOFTWARE
+            SPECS</h3>
+          <div id="modal-software-list" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div class="space-y-3">
+          <span class="text-xs font-mono text-zinc-400">KEYWORDS</span>
+          <div id="modal-tags" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+
+      <div id="modal-cta-box"
+        class="p-6 border-t dark:bg-zinc-900/40 dark:border-zinc-900 bg-zinc-50 border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-left">
+          <div class="text-xs font-mono text-zinc-500">INTERESTED IN COLLABORATION?</div>
+          <div class="text-sm font-medium mt-0.5">Let’s draft a project budget with this pipeline.</div>
+        </div>
+        <a id="cta-build-brief" href="#estimator-brief"
+          class="px-5 py-2.5 rounded-full text-xs font-semibold cursor-pointer transition-colors dark:bg-white dark:text-black dark:hover:bg-zinc-200 bg-zinc-950 text-white hover:bg-zinc-800">
+          Configure Custom Brief
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+{
+  "name": "Motion Designer Portfolio",
+  "description": "Interactive motion design portfolio with dynamic dark mode, responsive workspace, motion estimator blueprint, and visual sandbox playground.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
